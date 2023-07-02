@@ -10,8 +10,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-    const data = JSON.stringify(user);
-    localStorage.setItem('user', data);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   /**
@@ -39,12 +38,7 @@ class User {
       url: `${this.URL}/current`,
       method: 'GET',
       responseType: 'json',
-      callback: (err, response) => {
-        if(response && response.user) {
-          this.setCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      callback
     });
   }
 
@@ -60,12 +54,7 @@ class User {
       method: 'POST',
       responseType: 'json',
       data,
-      callback: (err, response) => {
-        if(response && response.user) {
-          this.setCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      callback
     });
   };
 
@@ -77,15 +66,10 @@ class User {
    * */
   static register(data, callback) {
     createRequest({
-      url: `${URL}/register`,
+      url: `${this.URL}/register`,
       data,
       method: 'POST',
-      callback:  (err, response) => {
-        if(response && response.user) {
-          this.setCurrent(response.user);
-        }
-        callback(err, response);
-      }
+      callback
     });
   };
 
@@ -95,14 +79,9 @@ class User {
    * */
   static logout(callback) {
     createRequest({
-      url: `${URL}/logout`,
+      url: `${this.URL}/logout`,
       method: 'POST',
-      callback:  (err, response) => {
-        if(response.success) {
-          this.unsetCurrent();
-        }
-        callback(err, response);
-      }
+      callback
     });
   };
 }
