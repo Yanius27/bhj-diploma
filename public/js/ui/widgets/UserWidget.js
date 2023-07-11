@@ -25,10 +25,10 @@ class UserWidget {
    * в элемент .user-name устанавливает имя
    * авторизованного пользователя
    * */
-  update(){
+  update() {
     const userName = document.querySelector('.user-name');
-    const user = new User();
-    const userData = user.current();
+    
+    const userData = User.current();
     if(userData) {
       userName.innerText = userData.name;
     }

@@ -41,23 +41,17 @@ class Sidebar {
 
       register.addEventListener('click', (event)=> {
         event.preventDefault();
-        const registerModal = App.getModal('register');
-        registerModal.open();
+        App.getModal('register').open();
       });
       login.addEventListener('click', (event)=> {
         event.preventDefault();
-        const loginModal = App.getModal('login');
-        loginModal.open();
+        App.getModal('login').open();
       });
       logaut.addEventListener('click', (event)=> {
         event.preventDefault();
-        User.logaut(function(err, response) {
+        User.logout((response) => {
           if(response && response.success) {
-            User.unsetCurrent();
             App.setState('init');
-          }
-          else {
-            alert(err);
           }
         });
       });  
