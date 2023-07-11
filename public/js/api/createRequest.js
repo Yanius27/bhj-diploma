@@ -8,8 +8,9 @@ const createRequest = (options = {}) => {
         else if(options.method === 'GET' && options.data && typeof(options.data) === 'object') {
           options.url += '?';
           for(let key of options.data) {
-             console.log(options.data[key]);
-            options.url += `${key}=${options.data[key]}&`
+            if(key[1]) {
+              options.url += `${key[0]}=${key[1]}&`
+            }
           }
           options.url[options.url.length - 1] = '';
           xhr.open(options.method, options.url);

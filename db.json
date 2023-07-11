@@ -122,6 +122,11 @@
       "name": "sdf67",
       "user_id": "z0732gljnvrusv",
       "id": "z0749oljys45v0"
+    },
+    {
+      "name": "12309",
+      "user_id": "z0732gljnvrusv",
+      "id": "z076bsljysqagm"
     }
   ],
   "transactions": [
@@ -358,6 +363,15 @@
       "account_id": "z07bu4ljpvnz19",
       "user_id": "z0732gljnvrusv",
       "created_at": "2023-07-11T19:01:14.260Z"
+    },
+    {
+      "id": "z072jgljyskqr3",
+      "type": "income",
+      "name": "ghjgjh",
+      "sum": 567,
+      "account_id": "z07bu4ljpvnz19",
+      "user_id": "z0732gljnvrusv",
+      "created_at": "2023-07-11T21:15:57.422Z"
     }
   ]
 }
