@@ -39,7 +39,13 @@ class AsyncForm {
    * }
    * */
   getData() {
-    return new FormData(this.element); 
+    const data = {};
+    for(let key of this.element.elements) {
+      if(key.name) {
+        data[key.name] = key.value;
+      }
+    }
+    return data;
   }
 
   onSubmit(options){

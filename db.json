@@ -54,79 +54,19 @@
       "id": "3"
     },
     {
-      "name": "123",
-      "user_id": "z0732gljnvrusv",
-      "id": "z07bu4ljpvnz19"
-    },
-    {
-      "name": "1233",
-      "user_id": "z0732gljnvrusv",
-      "id": "z0778ljpvpa1z"
-    },
-    {
-      "name": "12345",
-      "user_id": "z0732gljnvrusv",
-      "id": "z075kgljqla1xr"
-    },
-    {
-      "name": "123456",
-      "user_id": "z0732gljnvrusv",
-      "id": "z07cdoljqldhrx"
-    },
-    {
-      "name": "dollars",
-      "user_id": "z0732gljnvrusv",
-      "id": "z07bpwljqlzweq"
-    },
-    {
-      "name": "euro",
-      "user_id": "z0732gljnvrusv",
-      "id": "z07amsljqm0405"
-    },
-    {
       "name": "rub",
       "user_id": "z07ae0ljrdxm3r",
       "id": "z072xoljrdxtia"
     },
     {
-      "name": "yansumarokov",
-      "user_id": "z0732gljnvrusv",
-      "id": "z075goljyqojy8"
+      "name": "hjjh",
+      "user_id": "z074ioljoopphx",
+      "id": "z0764kljz2rd1o"
     },
     {
-      "name": "ivan",
-      "user_id": "z0732gljnvrusv",
-      "id": "z07bd0ljyqouyz"
-    },
-    {
-      "name": "1234567",
-      "user_id": "z0732gljnvrusv",
-      "id": "z071holjyqs42k"
-    },
-    {
-      "name": "sdf",
-      "user_id": "z0732gljnvrusv",
-      "id": "z07axkljyru95u"
-    },
-    {
-      "name": "yansumarokov1",
-      "user_id": "z0732gljnvrusv",
-      "id": "z075dwljyrwmfh"
-    },
-    {
-      "name": "sdf34",
-      "user_id": "z0732gljnvrusv",
-      "id": "z075h4ljys06e3"
-    },
-    {
-      "name": "sdf67",
-      "user_id": "z0732gljnvrusv",
-      "id": "z0749oljys45v0"
-    },
-    {
-      "name": "12309",
-      "user_id": "z0732gljnvrusv",
-      "id": "z076bsljysqagm"
+      "name": "dfgd8",
+      "user_id": "z074ioljoopphx",
+      "id": "z07tsljz31pzb"
     }
   ],
   "transactions": [
@@ -266,112 +206,31 @@
       "user_id": "1"
     },
     {
-      "id": "z071asljvjj2wt",
+      "id": "z07cgolk1adevj",
       "type": "income",
-      "name": "ЗП",
-      "sum": 12000,
-      "account_id": "z07bu4ljpvnz19",
+      "name": "Халтура",
+      "sum": 5000,
+      "account_id": "z074c0lk1acx1k",
       "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-09T14:39:24.796Z"
+      "created_at": "2023-07-13T15:09:40.878Z"
     },
     {
-      "id": "z0763sljvjje0b",
-      "type": "expense",
-      "name": "долг",
-      "sum": 1234,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-09T14:39:39.178Z"
-    },
-    {
-      "id": "z07d8ljvjkr9y",
-      "type": "expense",
-      "name": "Кредит",
-      "sum": 10766,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-09T14:40:43.029Z"
-    },
-    {
-      "id": "z07434ljvjlxoa",
-      "type": "expense",
-      "name": "кредит",
-      "sum": 200,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-09T14:41:37.977Z"
-    },
-    {
-      "id": "z074voljvjm4mv",
+      "id": "z07ahklk1bjf35",
       "type": "income",
-      "name": "Зп",
-      "sum": 200,
-      "account_id": "z07bu4ljpvnz19",
+      "name": "Халтура",
+      "sum": 3000,
+      "account_id": "z075iglk1al51m",
       "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-09T14:41:46.998Z"
+      "created_at": "2023-07-13T15:42:20.704Z"
     },
     {
-      "id": "z077t0ljymqe7q",
-      "type": "expense",
-      "name": "yansumarokov",
-      "sum": 500,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T18:32:23.413Z"
-    },
-    {
-      "id": "z07bjsljyn2s11",
+      "id": "z075uclk1hrylw",
       "type": "income",
-      "name": "зп",
-      "sum": 4000,
-      "account_id": "z07bpwljqlzweq",
+      "name": "Колым",
+      "sum": 7000,
+      "account_id": "z073tolk1hf95r",
       "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T18:42:01.188Z"
-    },
-    {
-      "id": "z075tgljyn40u0",
-      "type": "income",
-      "name": "yansumarokov",
-      "sum": 555,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T18:42:59.255Z"
-    },
-    {
-      "id": "z0733cljynez5x",
-      "type": "income",
-      "name": "yansumarokov",
-      "sum": 10000,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T18:51:30.308Z"
-    },
-    {
-      "id": "z07azgljynqpjg",
-      "type": "income",
-      "name": "yansumarokov",
-      "sum": 234,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T19:00:37.707Z"
-    },
-    {
-      "id": "z0751sljynrhqt",
-      "type": "income",
-      "name": "yansumarokov",
-      "sum": 453,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T19:01:14.260Z"
-    },
-    {
-      "id": "z072jgljyskqr3",
-      "type": "income",
-      "name": "ghjgjh",
-      "sum": 567,
-      "account_id": "z07bu4ljpvnz19",
-      "user_id": "z0732gljnvrusv",
-      "created_at": "2023-07-11T21:15:57.422Z"
+      "created_at": "2023-07-13T18:36:56.947Z"
     }
   ]
 }

@@ -34,20 +34,16 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    const removeAccBtn = document.querySelector('.remove-account');
-    removeAccBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.removeAccount();
+    this.element.addEventListener('click', (event) => {
+      event.preventDefault();
+      if(event.target.classList.contains('remove-account')) {
+        this.removeAccount();
+      }
+      else if(event.target.classList.contains('transaction__remove') || event.target.classList.contains('transaction-trash')) {
+        this.removeTransaction(event.target.closest('button').dataset.id);
+      }
     });
 
-    const removeTransactionBtn = document.querySelector('.transaction__remove');
-    if(removeTransactionBtn) {
-      removeTransactionBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.removeTransaction();
-      });
-    }
-  
   }
 
   /**
@@ -61,7 +57,7 @@ class TransactionsPage {
    * */
   removeAccount() {
     if(this.lastOptions && confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove(this.lastOptions, (response) => {
+      Account.remove({id: this.lastOptions.account_id}, (response) => {
         if(response && response.success) {
           App.updateWidgets();
           App.updateForms();
@@ -77,8 +73,17 @@ class TransactionsPage {
    * По удалению транзакции вызовите метод App.update(),
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
-  removeTransaction( id ) {
-
+  removeTransaction(id) {
+    if(id && confirm('Вы действительно хотите удалить эту транзакцию?')) {
+      Transaction.remove({id: id}, (response) => {
+        if(response && response.success) {
+          App.update();
+        }
+        else {
+          alert(response.error);
+        }
+      });
+    }
   }
 
   /**
@@ -88,16 +93,22 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options) {
-    this.lastOptions = options;
     if(options) {
+      this.lastOptions = options;
       Account.get(options.account_id, (response) => {
         if(response && response.success) {
           this.renderTitle(response.data.name);
+        }
+        else {
+          alert(response.error);
         }
       });
       Transaction.list(options, (response) => {
         if(response && response.success) {
           this.renderTransactions(response.data);
+        }
+        else {
+          alert(response.error);
         }
       });
     }
@@ -131,8 +142,8 @@ class TransactionsPage {
     const monthes = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
     const month = monthes[dateObj.getMonth()];
     const year = dateObj.getFullYear();
-    const hours = dateObj.getHours().padStart(2, '0');
-    const minutes = dateObj.getMinutes().padStart(2, '0');
+    const hours = dateObj.getHours();
+    const minutes = dateObj.getMinutes();
 
     return `${day} ${month} ${year} г. в ${hours}:${minutes}`;
   }
@@ -150,7 +161,7 @@ class TransactionsPage {
       <div class="transaction__info">
           <h4 class="transaction__title">${item.name}</h4>
           <!-- дата -->
-          <div class="transaction__date">${this.formatDate(item[created_at])}</div>
+          <div class="transaction__date">${this.formatDate(item.created_at)}</div>
       </div>
     </div>
     <div class="col-md-3">
@@ -162,7 +173,7 @@ class TransactionsPage {
     <div class="col-md-2 transaction__controls">
         <!-- в data-id нужно поместить id -->
         <button class="btn btn-danger transaction__remove" data-id="${item.id}">
-            <i class="fa fa-trash"></i>  
+            <i class="fa fa-trash transaction-trash"></i>  
         </button>
     </div>
 </div>`;
@@ -174,8 +185,10 @@ class TransactionsPage {
    * */
   renderTransactions(data) {
     const container = document.querySelector('.content');
+    container.innerHTML = '';
+
     data.forEach((e) => {
-      container.append(this.getTransactionHTML(e));
+      container.innerHTML += this.getTransactionHTML(e);
     });
   }
 }

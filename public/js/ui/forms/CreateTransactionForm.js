@@ -21,12 +21,16 @@ class CreateTransactionForm extends AsyncForm {
     const data = this.getData();
     Account.list(data, (response) => {
       if(response && response.success) {
+        select.innerHTML = '';
         response.data.forEach((e) => {
           const option = document.createElement('option');
           option.value = e.id;
           option.innerText = e.name;
           select.append(option);
         }) 
+      }
+      else {
+        alert(response.error);
       }
     });
   }
@@ -40,10 +44,12 @@ class CreateTransactionForm extends AsyncForm {
   onSubmit(data) {
     Transaction.create(data, (response) => {
       if(response && response.success) {
-        console.log(this.element);
         this.element.reset();
         App.getModal(this.element.id === 'new-income-form' ? 'newIncome' : 'newExpense').close();
         App.update();
+      }
+      else {
+        alert(response.error);
       }
     });
   }

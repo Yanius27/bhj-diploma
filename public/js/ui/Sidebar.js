@@ -53,6 +53,9 @@ class Sidebar {
           if(response && response.success) {
             App.setState('init');
           }
+          else {
+            alert(response.error);
+          }
         });
       });  
   }

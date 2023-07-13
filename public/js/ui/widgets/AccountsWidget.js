@@ -39,8 +39,6 @@ class AccountsWidget {
         this.onSelectAccount(event.target.closest('li'));
       }
     });
-    
-    // this.element.addEventListener()
   }
 
   /**
@@ -60,6 +58,9 @@ class AccountsWidget {
         if(response && response.success) {
           this.clear();
           response.data.forEach((elem) => this.renderItem(elem));
+        }
+        else {
+          alert(response.error);
         }
       })
     }
@@ -100,7 +101,7 @@ class AccountsWidget {
    * отображения в боковой колонке.
    * item - объект с данными о счёте
    * */
-  getAccountHTML(item){
+  getAccountHTML(item) {
     const li = document.createElement('li');
     li.classList.add('account');
     li.dataset.id = item.id;
