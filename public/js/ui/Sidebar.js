@@ -49,12 +49,12 @@ class Sidebar {
       });
       logaut.addEventListener('click', (event)=> {
         event.preventDefault();
-        User.logout((response) => {
+        User.logout((response, err) => {
           if(response && response.success) {
             App.setState('init');
           }
           else {
-            alert(response.error);
+            alert(err);
           }
         });
       });  

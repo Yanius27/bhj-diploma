@@ -19,18 +19,16 @@ class CreateTransactionForm extends AsyncForm {
   renderAccountsList() {
     const select = this.element.querySelector('select');
     const data = this.getData();
-    Account.list(data, (response) => {
+    Account.list(data, (response, err) => {
       if(response && response.success) {
-        select.innerHTML = '';
-        response.data.forEach((e) => {
-          const option = document.createElement('option');
-          option.value = e.id;
-          option.innerText = e.name;
-          select.append(option);
-        }) 
+        if(Object.keys(response.data).length !== 0) {
+          select.innerHTML = response.data.reduce((accum, current) => {
+            return accum + `<option value="${current.id}">${current.name}</option>`;
+          }, 0);
+        }
       }
       else {
-        alert(response.error);
+        alert(err);
       }
     });
   }
@@ -49,7 +47,7 @@ class CreateTransactionForm extends AsyncForm {
         App.update();
       }
       else {
-        alert(response.error);
+        alert(err);
       }
     });
   }

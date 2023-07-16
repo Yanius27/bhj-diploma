@@ -39,7 +39,7 @@ class TransactionsPage {
       if(event.target.classList.contains('remove-account')) {
         this.removeAccount();
       }
-      else if(event.target.classList.contains('transaction__remove') || event.target.classList.contains('transaction-trash')) {
+      else if(event.target.closest('.transaction__remove')) {
         this.removeTransaction(event.target.closest('button').dataset.id);
       }
     });
@@ -57,10 +57,13 @@ class TransactionsPage {
    * */
   removeAccount() {
     if(this.lastOptions && confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove({id: this.lastOptions.account_id}, (response) => {
+      Account.remove({id: this.lastOptions.account_id}, (response, err) => {
         if(response && response.success) {
           App.updateWidgets();
           App.updateForms();
+        }
+        else {
+          alert(err);
         }
       });
       this.clear();
@@ -75,12 +78,12 @@ class TransactionsPage {
    * */
   removeTransaction(id) {
     if(id && confirm('Вы действительно хотите удалить эту транзакцию?')) {
-      Transaction.remove({id: id}, (response) => {
+      Transaction.remove({id: id}, (response, err) => {
         if(response && response.success) {
           App.update();
         }
         else {
-          alert(response.error);
+          alert(err);
         }
       });
     }
@@ -95,20 +98,20 @@ class TransactionsPage {
   render(options) {
     if(options) {
       this.lastOptions = options;
-      Account.get(options.account_id, (response) => {
+      Account.get(options.account_id, (response, err) => {
         if(response && response.success) {
           this.renderTitle(response.data.name);
         }
         else {
-          alert(response.error);
+          alert(err);
         }
       });
-      Transaction.list(options, (response) => {
+      Transaction.list(options, (response, err) => {
         if(response && response.success) {
           this.renderTransactions(response.data);
         }
         else {
-          alert(response.error);
+          alert(err);
         }
       });
     }
@@ -185,10 +188,10 @@ class TransactionsPage {
    * */
   renderTransactions(data) {
     const container = document.querySelector('.content');
-    container.innerHTML = '';
-
-    data.forEach((e) => {
-      container.innerHTML += this.getTransactionHTML(e);
-    });
+    if(Object.keys(data) !== 0) {
+      container.innerHTML = data.reduce((accum, current) => {
+        return accum + this.getTransactionHTML(current);
+      }, '');
+    }
   }
 }

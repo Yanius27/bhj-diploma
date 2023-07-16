@@ -35,8 +35,9 @@ class AccountsWidget {
       if(event.target.classList.contains('create-account')) {
         App.getModal('createAccount').open();
       }
-      else if(event.target.closest('li').classList.contains('account')) {
-        this.onSelectAccount(event.target.closest('li'));
+      else if(event.target.closest('li.account')) {
+        console.log(event.target.closest('li.account'));
+        this.onSelectAccount(event.target.closest('li.account'));
       }
     });
   }
@@ -54,13 +55,13 @@ class AccountsWidget {
   update() {
     const data = User.current();
     if(data) {
-      Account.list(data, (response) => {
+      Account.list(data, (response, err) => {
         if(response && response.success) {
           this.clear();
           response.data.forEach((elem) => this.renderItem(elem));
         }
         else {
-          alert(response.error);
+          alert(err);
         }
       })
     }
