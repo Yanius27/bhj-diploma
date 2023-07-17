@@ -1,5 +1,7 @@
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest(); 
+    const formData = new FormData();
+
     if(options.data && options.method === 'GET') {
       options.url += '?';
       for(let key in options.data) {
@@ -10,7 +12,6 @@ const createRequest = (options = {}) => {
       options.url = options.url.slice(0, -1);
     }
     else if(options.method !== 'GET') {
-      var formData = new FormData();
       for(let key in options.data) {
         formData.append(key, options.data[key]);
       }
@@ -25,11 +26,11 @@ const createRequest = (options = {}) => {
         xhr.send();
       }
     }
-    catch(error) {
-      var err = error;
+    catch(err) {
+      options.callback(err, xhr.response);
     }
 
     xhr.addEventListener('load', ()=> {
-      options.callback(xhr.response, err);
+      options.callback(xhr.response);
     });
 };

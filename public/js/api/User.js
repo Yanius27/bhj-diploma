@@ -38,14 +38,14 @@ class User {
       url: this.URL + '/current',
       method: 'GET',
       responseType: 'json',
-      callback: (response, err) => {
+      callback: (response) => {
         if(response.success) {
           User.setCurrent(response.user);
         }
         else {
           User.unsetCurrent();
         }
-        callback(response, err);
+        callback(response);
       }
     });
   }
@@ -62,11 +62,11 @@ class User {
       method: 'POST',
       responseType: 'json',
       data,
-      callback: (response, err) => {
+      callback: (response) => {
         if(response.success) {
           User.setCurrent(response.user);
         }
-        callback(response, err);  
+        callback(response);  
       }
     });
   };
@@ -82,11 +82,11 @@ class User {
       url: this.URL + '/register',
       data,
       method: 'POST',
-      callback: (response, err) => {
+      callback: (response) => {
         if(response.success) {
           User.setCurrent(response.user);
         }
-        callback(response, err);
+        callback(response);
       }
     });
   };
@@ -99,11 +99,11 @@ class User {
     createRequest({
       url: this.URL + '/logout',
       method: 'POST',
-      callback: (response, err) => {
+      callback: (response) => {
         if(response.success) {
           User.unsetCurrent();
         }
-        callback(response, err);
+        callback(response);
       }
     });
   };
